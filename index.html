@@ -11,6 +11,24 @@
   background: #111;
   padding: 10px;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centre horizontalement le contenu */
+  gap: 10px;
+}
+
+
+.forme-fixe {
+  position: fixed;
+  bottom: 0;           /* colle en bas */
+  left: 0;             /* colle à gauche */
+  width: 100vw;
+  height: 0px;
+    box-sizing: border-box;
+      align-items: center;
+  background: linear-gradient(0deg, #ff660050, #000000);
+    background: rgba(0, 255, 0, 0.123);
+  z-index: -1;    /* met en arrière-plan */
 }
 
 
@@ -70,6 +88,17 @@
     font-style: italic;
 }
 
+#audioVisualizer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 150px;
+  z-index: -1; /* arrière plan */
+  background: #111;
+  display: block;
+}
+
 
 .gros-texte { font-size: 60px; }
 
@@ -99,6 +128,10 @@ h1 { font-size: 40px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
+
+<div class="forme-fixe"></div>
+
+
 
 
 <div style="display:flex; align-items:center; gap:10px;">
@@ -518,6 +551,7 @@ h1 { font-size: 40px; margin-bottom: 20px; }
     </div>
 
 <script>
+    
 document.querySelectorAll('.player-c').forEach(player => {
     let audio = player.querySelector('audio');
     let play = player.querySelector('.play');
@@ -527,6 +561,8 @@ document.querySelectorAll('.player-c').forEach(player => {
     let trackName = player.querySelector('.track-name');
 let volumeControl = document.getElementById('volumeControl');
 let audioElements = document.querySelectorAll('audio'); // tous les lecteurs audio
+
+
 
 document.querySelectorAll('.player-c').forEach(player => {
     let audio = player.querySelector('audio');
