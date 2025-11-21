@@ -479,10 +479,13 @@ document.querySelectorAll('.player-c').forEach(player => {
 
     play.onclick = () => {
         if(audio.paused){
-            // Pause toutes les autres musiques
-            document.querySelectorAll('audio').forEach(a => {
+            // Pause toutes les autres musiques et remet leur bouton à "JOUER"
+            document.querySelectorAll('.player-c').forEach(p => {
+                let a = p.querySelector('audio');
+                let btn = p.querySelector('.play');
                 if(a !== audio) {
                     a.pause();
+                    btn.textContent = "JOUER"; // Remet le texte sur "JOUER" pour les autres
                 }
             });
             audio.play();
@@ -493,7 +496,7 @@ document.querySelectorAll('.player-c').forEach(player => {
         }
     };
 
-    // Remet le bouton si la musique finit
+    // Quand la musique finit, remet le bouton à "JOUER"
     audio.onended = () => {
         play.textContent = "JOUER";
     };
