@@ -1,60 +1,201 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <meta charset="UTF-8">
-    <title>Bienvenue sur le hub de Renard International</title>
-
-    <style>
-        @font-face {
-            font-family: 'Helvetica World';
-            src: url('fonts/HelveticaWorld-Italic.woff2') format('woff2');
-            font-weight: normal;
-            font-style: italic;
-        }
-
-        body {
-            font-family: 'Helvetica World', sans-serif;
-            font-style: italic; /* si tu veux tout le site en italique */
-        }
-    </style>
-
     <meta charset="UTF-8">
     <title>Liens</title>
     <style>
-        body {
-            background: #111;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-        }
-        a {
-            color: #4da6ff;
-            font-size: 20px;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        h1 {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-        .box {
-            margin-bottom: 15px;
-        }
+.player-c {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-style: italic;
+    color: white;
+    background:#111;
+    padding: 10px;
+    border:1px solid #fff;
+    width:1400px;
+}
+
+.play {
+    background:none;
+    border:1px solid #fff;
+    color:#fff;
+    padding:5px 10px;
+    cursor:pointer;
+    font-style: italic;
+}
+
+.bar {
+    flex:1;
+    height:10px;
+    background:#333;
+    position:relative;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.progress {
+    height:100%;
+    width:0%;
+    background:#fff;
+    border-radius: 5px;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.timer {
+    min-width: 80px;
+    font-size: 20px;
+    font-family: inherit;
+    font-style: italic;
+}
+
+.track-name {
+    min-width: 150px;
+    font-size: 50px;
+    font-family: 'Helvetica World';
+    font-style: italic;
+}
+
+
+.gros-texte { font-size: 60px; }
+
+@font-face {
+    font-family: 'Helvetica World';
+    src: url('fonts/helvetica-world-bold-italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-weight: bold;
+}
+body {
+    font-family: 'Helvetica World', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    background: #000000;
+    color: #fff;
+    padding: 40px;
+}
+a {
+    color: #4da6ff;
+    font-size: 20px;
+    text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+h1 { font-size: 40px; margin-bottom: 20px; }
+.box { margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
-    font-family: 'Helvetica World', sans-serif;
-    font-style: italic;
 
-<h1>Mes liens</h1>
+<div style="display:flex; align-items:center; gap:10px;">
 
-<div class="box"><a href="https://example.com">Lien 1</a></div>
+<p class="gros-texte">Bienvenue sur le hub de Renard International™</p>
+    <img src="images/globe blanc.png" alt="Description de l'image" style="height:200px;">
+</div>
+<h1>Musiques</h1>
+
+<div class="player-c">
+        <span class="track-name"></span>
+    <button class="play">JOUER</button>
+    <div class="bar">
+        <div class="progress"></div>
+    </div>
+    <span class="timer">00:00 / 00:00</span>
+
+</div>
+<audio id="audio" src="musiques/truc 3.mp3"></audio>
+
+<h1>Liens</h1>
+<div class="box"><a href="https://youtube.com">Lien 1</a></div>
 <div class="box"><a href="https://example.com">Lien 2</a></div>
 <div class="box"><a href="https://example.com">Lien 3</a></div>
 
+<script>
+// Elements
+let audio = document.getElementById("audio");
+let play = document.querySelector(".play");
+let progress = document.querySelector(".progress");
+let bar = document.querySelector(".bar");
+let timer = document.querySelector(".timer");
+let trackName = document.querySelector(".track-name");
+
+// Fonction pour récupérer et afficher le nom du fichier audio
+function updateTrackName() {
+    let src = audio.src;
+    let name = src.split("/").pop().replace(".mp3", "");
+    name = decodeURIComponent(name);
+    trackName.textContent = name;
+}
+
+
+// Mets à jour le nom du morceau (au chargement de la page et si tu changes de piste)
+audio.addEventListener("loadedmetadata", updateTrackName);
+// Pour l'initialisation
+updateTrackName();
+
+
+// Bouton play/pause
+play.onclick = () => {
+    if(audio.paused){
+        audio.play();
+        play.textContent = "PAUSE";
+    } else {
+        audio.pause();
+        play.textContent = "JOUER";
+    }
+};
+
+// Mise à jour de la barre et du minuteur
+audio.ontimeupdate = () => {
+    if (audio.duration) {
+        progress.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+        timer.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
+    } else {
+        timer.textContent = "00:00 / 00:00";
+    }
+};
+
+// Fonction pour formater le temps (mm:ss)
+function formatTime(sec) {
+    sec = Math.floor(sec);
+    let m = Math.floor(sec / 60);
+    let s = sec % 60;
+    if (s < 10) s = "0" + s;
+    if (m < 10) m = "0" + m;
+    return m + ":" + s;
+}
+
+// Aller à un point précis sur la barre avec la souris
+bar.onclick = (e) => {
+    if(audio.duration) {
+        let rect = bar.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        let percent = x / rect.width;
+        audio.currentTime = percent * audio.duration;
+    }
+};
+
+// Scrub en gardant le bouton enfoncé
+let seeking = false;
+bar.addEventListener('mousedown', (e) => seeking = true);
+window.addEventListener('mouseup', (e) => seeking = false);
+window.addEventListener('mousemove', (e) => {
+    if(seeking && audio.duration) {
+        let rect = bar.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        // Clamp la valeur
+        x = Math.max(0, Math.min(rect.width, x));
+        let percent = x / rect.width;
+        audio.currentTime = percent * audio.duration;
+    }
+});
+
+// Remet le bouton si la musique finit
+audio.onended = () => {
+    play.textContent = "JOUER";
+};
+</script>
 </body>
 </html>
