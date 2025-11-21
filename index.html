@@ -105,6 +105,13 @@ h1 { font-size: 40px; margin-bottom: 20px; }
 
 <h1>Musiques :</h1>
 
+<div style="display: flex; align-items: center; gap: 10px;">
+  <label for="volumeControl">Volume :</label>
+  <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" style="width:150px;">
+</div>
+
+
+
 <div style="height:50px;"></div>
 
 
@@ -388,6 +395,15 @@ document.querySelectorAll('.player-c').forEach(player => {
     let bar = player.querySelector('.bar');
     let timer = player.querySelector('.timer');
     let trackName = player.querySelector('.track-name');
+let volumeControl = document.getElementById('volumeControl');
+let audioElements = document.querySelectorAll('audio'); // tous les lecteurs audio
+
+volumeControl.addEventListener('input', () => {
+    let vol = volumeControl.value;
+    audioElements.forEach(audio => {
+        audio.volume = vol; // applique même volume à tous les lecteurs
+    });
+});
 
     function formatTime(sec) {
         sec = Math.floor(sec);
