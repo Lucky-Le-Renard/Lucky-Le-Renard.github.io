@@ -8,14 +8,12 @@
         #volumeControlContainer {
             position: sticky;
             top: 0px;
-            /* distance depuis le haut de l'écran */
             background: #111;
             padding: 10px;
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Centre horizontalement le contenu */
             gap: 10px;
         }
 
@@ -23,9 +21,7 @@
         .forme-fixe {
             position: fixed;
             bottom: 0;
-            /* colle en bas */
             left: 0;
-            /* colle à gauche */
             width: 100vw;
             height: 0px;
             box-sizing: border-box;
@@ -33,7 +29,6 @@
             background: linear-gradient(0deg, #ff660050, #000000);
             background: rgba(0, 255, 0, 0.123);
             z-index: -1;
-            /* met en arrière-plan */
         }
 
         .séparation {
@@ -162,6 +157,13 @@
     text-align: center;
 }
 
+.titre-autre {
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
 .fond-hub {
    
     background-image: url("images/design/fond1.png");
@@ -169,7 +171,36 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 600px; /* obligatoire sinon y a rien à afficher */
+    height: 600px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fond-2 {
+   
+    background-image: url("images/design/fond2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 300px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fond-3 {
+   
+    background-image: url("images/design/fond3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 300px;
     width: 100%;
  margin: 0;
     display: flex;
@@ -215,6 +246,11 @@
     <div style="height:100px;"></div>
     <div class="séparation"></div>
     <h1 id="section1">Musiques :</h1>
+
+        <div class="fond-3">
+    <h1 class="titre-autre" id="section2" style="text-align: center;" >Audiothèque (depuis 2020)</h1>
+    </div>
+
     <h3>pour une meilleur expérience, je recommande de commencer par "SkyWave" "Version 2" et "2000" (c'est celles que
         je préfère)</h3>
     <h3>je recommande également d'utiliser un casque</h3>
@@ -677,7 +713,9 @@
     <div class="séparation"></div>
 
     <div style="height:50px;"></div>
-    <h1 id="section2">Cours de musique</h1>
+    <div class="fond-2">
+    <h1 class="titre-autre" id="section2" style="text-align: center;" >Cours de musique</h1>
+    </div>
         <div style="height:50px;"></div>
     <h3>à la base je voulais en faire une vidéo mais ça demandait tellement de préparation que ça m'a vite gavé et au final je le fais ici, c'est tout aussi pratique</h3>
         <div style="height:50px;"></div>
