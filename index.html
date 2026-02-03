@@ -228,6 +228,23 @@
     justify-content: center;
     align-items: center;
 }
+
+.fond-random {
+   
+    background-image: url("images/espace 3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 600px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
     </style>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -239,7 +256,7 @@
 
 
 
-<div class="fond-hub">
+<div class="fond-random">
     <h3 class="titre-hub">
         Bienvenue sur le hub de Renard International™
         <img src="images/globe noir - petit.png" alt="le logo" style="height:200px;">
@@ -1311,6 +1328,22 @@
             audio.addEventListener('loadedmetadata', updateTrackName);
             updateTrackName();
         });
+
+        // liste des images possibles
+const images = [
+  "images/espace 3.png"
+];
+
+// choisir une image au hasard
+function setImageAleatoire() {
+  const index = Math.floor(Math.random() * images.length);
+  const img = document.getElementById("imageAleatoire");
+  img.src = images[index];
+}
+
+// on appelle la fonction quand la page est chargée
+setImageAleatoire();
+
     </script>
 </body>
 
