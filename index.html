@@ -177,7 +177,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
+z-index: -1;
     height: 600px;
     width: 100%;
  margin: 0;
@@ -251,7 +251,7 @@
   /* remplace background-size: cover pour une vidéo */
   min-width: 100%;
   min-height: 100%;
-  transform: translate(-50%, -80%);
+  transform: translate(-50%, -40%);
   object-fit: cover;    /* garde les proportions et recadre */
   z-index: -1;          /* derrière ton texte */
 }
@@ -259,6 +259,7 @@
 .parallax {
   position: relative;
   will-change: transform;
+  z-index: -1;  
 }
 
 
@@ -276,14 +277,17 @@
 <div class="parallax" id="parallax-1"></div>
 
 <div class="fond-random">
-    <video class="fond-video" src="images/espace animé0001-0250.mp4" autoplay muted loop></video>
+    
+    <video class="fond-video" src="images/espace animé0001-0500.mp4" autoplay muted loop>
+        
+    </video>
     <h3 class="titre-hub">
         Bienvenue sur le hub de Renard International™
         <img src="images/globe blanc - petit.png" alt="le logo" style="height:200px;">
     </h3>
 </div>
 </div>
-
+<div style="height:100px;"></div>
     <!--<h3 style="color: rgb(128, 128, 128);">"les gens qui sont prêt à vous parler ne demandent qu'à être écoutés"</h3>-->
     <!--<h3 style="color: rgb(128, 128, 128);">"vous écouterez peut être alors le subtil reflet de vous-même qui hurle de l'intérieur pour qu'on l'entende"</h3>-->
         <!--<div class="carre"></div>-->
