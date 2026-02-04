@@ -153,7 +153,7 @@
 .titre-hub {
     font-size: 4rem;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
 }
 
@@ -229,19 +229,36 @@
     align-items: center;
 }
 
-.fond-random {
-   
-    background-image: url("images/espace 3.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    height: 600px;
-    width: 100%;
- margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.fond-random {
+      z-index: -1;
+  /* ton CSS existant */
+  height: 600px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;   /* important pour positionner la vidéo dedans */
+  overflow:visible;     /* coupe ce qui dépasse comme pour un fond cover */
+}
+
+.fond-random .fond-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* remplace background-size: cover pour une vidéo */
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -80%);
+  object-fit: cover;    /* garde les proportions et recadre */
+  z-index: -1;          /* derrière ton texte */
+}
+
+.parallax {
+  position: relative;
+  will-change: transform;
 }
 
 
@@ -251,18 +268,21 @@
 
 <body>
 
-    <div class="séparation2"></div>
+<div class="parallax" id="parallax-1">
 
 
 
+
+<div class="parallax" id="parallax-1"></div>
 
 <div class="fond-random">
+    <video class="fond-video" src="images/espace animé0001-0250.mp4" autoplay muted loop></video>
     <h3 class="titre-hub">
         Bienvenue sur le hub de Renard International™
-        <img src="images/globe noir - petit.png" alt="le logo" style="height:200px;">
+        <img src="images/globe blanc - petit.png" alt="le logo" style="height:200px;">
     </h3>
 </div>
-
+</div>
 
     <!--<h3 style="color: rgb(128, 128, 128);">"les gens qui sont prêt à vous parler ne demandent qu'à être écoutés"</h3>-->
     <!--<h3 style="color: rgb(128, 128, 128);">"vous écouterez peut être alors le subtil reflet de vous-même qui hurle de l'intérieur pour qu'on l'entende"</h3>-->
@@ -1209,6 +1229,15 @@
     <div class="séparation2"></div>
 
     <script>
+         
+const para = document.getElementById('parallax-1');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  // 0.3 = l’élément bouge 3x moins vite que le scroll
+  para.style.transform = `translateY(${y * 0.3}px)`;
+});
+
 
         document.querySelectorAll('.player-c').forEach(player => {
             let audio = player.querySelector('audio');
