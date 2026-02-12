@@ -199,6 +199,7 @@ z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
+      z-index: 1;
 }
 .fond-3 {
    
@@ -213,6 +214,7 @@ z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
+      z-index: 1;
 }
 .fond-4 {
    
@@ -227,13 +229,24 @@ z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
+      z-index: 1;
 }
 
+.bg-video {
+  position: fixed;   /* reste immobile même quand on scroll */
+  top: 30%;
+  left: 40%;
+  width: 1300px;
+  height: 1300px;
+  
+  object-fit:cover; /* comme background-size: cover */
+  z-index: -1;       /* bien derrière tout */
+}
 
 .fond-random {
-      z-index: -1;
+      z-index: -2;
   /* ton CSS existant */
-  height: 600px;
+  height: 500px;
   width: 100%;
   margin: 0;
   display: flex;
@@ -242,16 +255,20 @@ z-index: -1;
 
   position: relative;   /* important pour positionner la vidéo dedans */
   overflow:visible;     /* coupe ce qui dépasse comme pour un fond cover */
+
+
 }
+
+
 
 .fond-random .fond-video {
   position: absolute;
-  top: 50%;
+  top: 90%;
   left: 50%;
   /* remplace background-size: cover pour une vidéo */
   min-width: 100%;
   min-height: 100%;
-  transform: translate(-50%, -40%);
+  transform: translate(-50%, -50%);
   object-fit: cover;    /* garde les proportions et recadre */
   z-index: -1;          /* derrière ton texte */
 }
@@ -268,8 +285,9 @@ z-index: -1;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
-
+<video class="bg-video" src="images/fond.mp4" autoplay muted loop></video>
 <div class="parallax" id="parallax-1">
+
 
 
 
@@ -278,15 +296,14 @@ z-index: -1;
 
 <div class="fond-random">
     
-    <video class="fond-video" src="images/espace animé0001-0500.mp4" autoplay muted loop>
-        
-    </video>
+    <video class="fond-video" src="images/espace animé0001-0500.mp4" autoplay muted loop> </video>
     <h3 class="titre-hub">
         Bienvenue sur le hub de Renard International™
         <img src="images/globe blanc - petit.png" alt="le logo" style="height:200px;">
     </h3>
 </div>
 </div>
+
 <div style="height:100px;"></div>
     <!--<h3 style="color: rgb(128, 128, 128);">"les gens qui sont prêt à vous parler ne demandent qu'à être écoutés"</h3>-->
     <!--<h3 style="color: rgb(128, 128, 128);">"vous écouterez peut être alors le subtil reflet de vous-même qui hurle de l'intérieur pour qu'on l'entende"</h3>-->
