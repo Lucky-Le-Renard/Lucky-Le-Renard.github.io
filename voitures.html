@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>RENARD INTERNATIONAL</title>
+    <style>
+        #volumeControlContainer {
+            position: sticky;
+            top: 0px;
+            background: #111;
+            padding: 10px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* NAV */
+
+        nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        nav button {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav button.active {
+            background: #fff;
+            color: #000;
+        }
+        
+        .forme-fixe {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 0px;
+            box-sizing: border-box;
+            align-items: center;
+            background: linear-gradient(0deg, #ff660050, #000000);
+            background: rgba(0, 255, 0, 0.123);
+            z-index: -1;
+        }
+
+        .séparation {
+            height: 10px;
+            box-sizing: border-box;
+            align-items: center;
+            background: #003cff57;
+        }
+
+        .séparation2 {
+            height: 15px;
+            width: auto;
+            align-items: center;
+            background: #0015ff57;
+        }
+
+        .player-c {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            gap: 15px;
+            font-style: italic;
+            color: white;
+            background: #111;
+            padding: 10px;
+            border: 1px solid #fff;
+            width: auto;
+        }
+
+        .play {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .bar {
+            flex: 1;
+            height: 10px;
+            background: #333;
+            position: relative;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .timer {
+            min-width: 80px;
+            font-size: 20px;
+            font-family: inherit;
+            font-style: italic;
+        }
+
+        .track-name {
+            min-width: 150px;
+            font-size: 50px;
+            font-family: 'Helvetica World';
+            font-style: italic;
+        }
+
+
+        .gros-texte {
+            font-size: 60px;
+        }
+
+        
+
+        @font-face {
+            font-family: 'Arial Narrow Bold Italic';
+            src: url('fonts/Arial Narrow Bold Italic.woff2') format('woff2');
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        body {
+            font-family: 'Arial Bold Italic';
+            src: url('fonts/Arial Bold Italic.woff2') format('woff2');
+                        font-style: italic;
+            font-weight: bold;
+            background: #000000;
+            color: #fff;
+            padding: 40px;
+        }
+
+        a {
+            color: #ff4d4d;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            margin-bottom: 15px;
+        }
+
+         .carre {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+        }
+
+.titre-hub {
+                    font-family: 'Helvetica World';
+            src: url('fonts/helvetica-world-bold-italic.woff2') format('woff2');
+                        font-style: italic;
+            font-weight: bold;
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.titre-autre {
+                font-family: 'Helvetica World';
+            src: url('fonts/helvetica-world-bold-italic.woff2') format('woff2');
+                        font-style: italic;
+            font-weight: bold;
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.titre-autre2 {
+                    font-family: 'Helvetica World';
+            src: url('fonts/helvetica-world-bold-italic.woff2') format('woff2');
+                        font-style: italic;
+            font-weight: bold;
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.fond-hub {
+   
+    background-image: url("images/design/fond1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+z-index: -1;
+    height: 600px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fond-2 {
+   
+    background-image: url("images/design/fond2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 300px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      z-index: 1;
+}
+.fond-3 {
+   
+    background-image: url("images/design/fond3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 300px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      z-index: 1;
+}
+.fond-4 {
+   
+    background-image: url("images/design/fond5.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 300px;
+    width: 100%;
+ margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      z-index: 1;
+}
+
+.bg-video {
+  position: fixed;   /* reste immobile même quand on scroll */
+  top: 30%;
+  left: 40%;
+  width: 1300px;
+  height: 1300px;
+  
+  object-fit:cover; /* comme background-size: cover */
+  z-index: -1;       /* bien derrière tout */
+}
+
+.fond-random {
+      z-index: -2;
+  /* ton CSS existant */
+  height: 500px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;   /* important pour positionner la vidéo dedans */
+  overflow:visible;     /* coupe ce qui dépasse comme pour un fond cover */
+
+
+}
+
+
+
+.fond-random .fond-video {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  /* remplace background-size: cover pour une vidéo */
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;    /* garde les proportions et recadre */
+  z-index: -1;          /* derrière ton texte */
+}
+
+.parallax {
+  position: relative;
+  will-change: transform;
+  z-index: -1;  
+}
+
+
+    </style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+            <video class="bg-video" src="images/fond.mp4" autoplay muted loop></video>
+  <nav>
+    <button onclick="location.href='index.html'">Acceuil</button>
+    <button onclick="location.href='musiques.html'">Musiques</button>
+    <button onclick="location.href='cours.html'">Cours de Musique</button>
+    <button onclick="location.href='photos.html'">Photos de profil</button>
+    <button onclick="location.href='art.html'">Art</button>
+        <button class="active" onclick="location.href='voitures.html'">Voitures</button>
+    <button onclick="location.href='liens.html'">Liens</button>
+  </nav>
+
+    <nav>
+    <button onclick="location.href='Arando-Royale.html'">Arando - Royale</button>
+    <button onclick="location.href='SATA-Grande_Spatiale.html'">SATA - Grande Spatiale</button>
+    <button onclick="location.href='SATA-Dimension.html'">SATA - Dimension</button>
+    <button onclick="location.href='SATA-Destination.html'">SATA - Destination</button>
+  </nav>
+<div class="parallax" id="parallax-1">
+
+<div class="parallax" id="parallax-1"></div>
+
+
+
+    <h3 class="titre-hub">
+       Voitures
+    </h3>
+</div>
+
+
+
+
+<div style="height:100px;"></div>
+    <!--<h3 style="color: rgb(128, 128, 128);">"les gens qui sont prêt à vous parler ne demandent qu'à être écoutés"</h3>-->
+    <!--<h3 style="color: rgb(128, 128, 128);">"vous écouterez peut être alors le subtil reflet de vous-même qui hurle de l'intérieur pour qu'on l'entende"</h3>-->
+        <!--<div class="carre"></div>-->
+<h3>Véhicules fictifs, axé sur le "futur vu du passé"</h3>
+
+    <div style="height:100px;"></div>
+    <h3 style="text-align: center;">2026 - Renard International</h3>
+    <img src="images/globe blanc - petit.png" alt="Description" style="display:block; margin: 0 auto; height: 100px;">
+
+    <div class="séparation2"></div>
+
+    <script>
+         
+const para = document.getElementById('parallax-1');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  // 0.3 = l’élément bouge 3x moins vite que le scroll
+  para.style.transform = `translateY(${y * 0.3}px)`;
+});
+
+
+        document.querySelectorAll('.player-c').forEach(player => {
+            let audio = player.querySelector('audio');
+            let play = player.querySelector('.play');
+            let progress = player.querySelector('.progress');
+            let bar = player.querySelector('.bar');
+            let timer = player.querySelector('.timer');
+            let trackName = player.querySelector('.track-name');
+            let volumeControl = document.getElementById('volumeControl');
+            let audioElements = document.querySelectorAll('audio'); // tous les lecteurs audio
+
+
+
+            document.querySelectorAll('.player-c').forEach(player => {
+                let audio = player.querySelector('audio');
+                let play = player.querySelector('.play');
+
+                play.onclick = () => {
+                    if (audio.paused) {
+                        // Pause toutes les autres musiques et remet leur bouton à "JOUER"
+                        document.querySelectorAll('.player-c').forEach(p => {
+                            let a = p.querySelector('audio');
+                            let btn = p.querySelector('.play');
+                            if (a !== audio) {
+                                a.pause();
+                                btn.textContent = "JOUER"; // Remet le texte sur "JOUER" pour les autres
+                            }
+                        });
+                        audio.play();
+                        play.textContent = "PAUSE";
+                    } else {
+                        audio.pause();
+                        play.textContent = "JOUER";
+                    }
+                };
+
+                // Quand la musique finit, remet le bouton à "JOUER"
+                audio.onended = () => {
+                    play.textContent = "JOUER";
+                };
+            });
+
+
+            audio.volume = 0.5;
+            volumeControl.value = 0.5;
+            volumeControl.addEventListener('input', () => {
+                let vol = volumeControl.value;
+                audioElements.forEach(audio => {
+                    audio.volume = vol; // applique même volume à tous les lecteurs
+                });
+            });
+
+            function formatTime(sec) {
+                sec = Math.floor(sec);
+                let m = Math.floor(sec / 60);
+                let s = sec % 60;
+                if (s < 10) s = "0" + s;
+                if (m < 10) m = "0" + m;
+                return m + ":" + s;
+            }
+
+            function updateTrackName() {
+                let src = audio.src;
+                let name = src.split('/').pop().replace('.mp3', '');
+                name = decodeURIComponent(name);
+                trackName.textContent = name;
+            }
+
+            play.onclick = () => {
+                if (audio.paused) {
+                    audio.play();
+                    play.textContent = "PAUSE";
+                } else {
+                    audio.pause();
+                    play.textContent = "JOUER";
+                }
+            };
+
+            audio.ontimeupdate = () => {
+                if (audio.duration) {
+
+
+                    progress.style.width = (audio.currentTime / audio.duration) * 100 + '%';
+                    timer.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+                } else {
+                    timer.textContent = '00:00 / ??:??';
+                }
+            };
+
+
+            bar.onclick = e => {
+                if (audio.duration) {
+                    let rect = bar.getBoundingClientRect();
+                    let x = e.clientX - rect.left;
+                    let percent = x / rect.width;
+                    audio.currentTime = percent * audio.duration;
+                }
+            };
+
+            let seeking = false;
+            bar.addEventListener('mousedown', () => seeking = true);
+            window.addEventListener('mouseup', () => seeking = false);
+            window.addEventListener('mousemove', e => {
+                if (seeking && audio.duration) {
+                    let rect = bar.getBoundingClientRect();
+                    let x = e.clientX - rect.left;
+                    x = Math.max(0, Math.min(rect.width, x));
+                    let percent = x / rect.width;
+                    audio.currentTime = percent * audio.duration;
+                }
+            });
+
+            audio.onended = () => {
+                play.textContent = "JOUER";
+            };
+
+            audio.addEventListener('loadedmetadata', updateTrackName);
+            updateTrackName();
+        });
+
+        // liste des images possibles
+const images = [
+  "images/espace 3.png"
+];
+
+// choisir une image au hasard
+function setImageAleatoire() {
+  const index = Math.floor(Math.random() * images.length);
+  const img = document.getElementById("imageAleatoire");
+  img.src = images[index];
+}
+
+setImageAleatoire();
+
+    </script>
+</body>
+
+</html>
