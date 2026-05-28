@@ -369,30 +369,52 @@ z-index: -1;
         <h3>faites ensuite une vérification du matérielle et faites les mises à jour nécessaires</h3>
         <h3>allez sur votre app NVIDIA et faites aussi les mises à jour nécessaires, ça paraît rien mais on sait jamais</h3>
 <div style="height:100px;"></div>
-            <h1>Partie 3: BIOS</h1>
-<h3>pensez d'abord à vérifier la fréquence à laquelle votre processeur tourne en pleine charge, et vérifiez ensuite les données constructeurs,</h3>
-<h3>si sa fréquence est inférieure à celle prévue ET qu'il ne se limite toujours pas thermiquement, activez le paramètre qui suivra dans le BIOS avec (*)</h3>
+
+
+
+<h1>Préparatifs pour la suite :</h1>
+<h3>installez ThrottleStop et MSI Afterburner</h3>
+<h3>MSI Afterburner permet l'overclock de la carte graphique, et si vous avez fait changé sa pâte, ça devrait être utile</h3>
+<h3>ThrottleStop permet la gestion complète du processeur, il sera très utile pour connaîre ses températures, et ses limitations</h3>
 
             <h3>rendez-vous dans votre BIOS et faites ça :</h3>
             <h3>activez le Resizeable Bar (efficace pour la mémoire)</h3>
             <h3>activez Speedstep</h3>
-            <h3>*augmenter la fréquence et la tension du processeur selon ses spécificités recommandés</h3>
+            <h3>n'activez PAS l'hyperthreading ça pue c'est nul ça rend instable un overclock</h3>
 <div style="height:100px;"></div>
-            <h1>Partie 4: Software</h1>
-            <h3>installez ThrottleStop et MSI Afterburner</h3>
-                        <h3>ThrottleStop permet la gestion complète du processeur, il sera très utile pour connaîre ses températures, et ses limitations</h3>
-                                    <h3>MSI Afterburner permet l'overclock de la carte graphique, et si vous avez fait changé sa pâte, ça devrait être utile</h3>
+
+
+
+            <h1>Cas n°1 : votre pc chauffe de malade mentale parce qu'il y a du gras et du jambon bloqué dans la ventilation</h1>
             <h3>lancez ThrottleStop, et allez dans la fenêtre "limits"</h3>
             <h3>si en dessous de "core" vous trouvez écrit en rouge "thermal" c'est que malgré l'application de nouvelle pâte et le remplacement du ventirad,
                 il faut diminuer la tension du processeur
             </h3>
-                        <h3>le problème c'est que à partir de là c'est des paramètres qui s'appliquent uniquement à mon pc portable,
-                            consultez ChatGPT ou n'importe quel forum reddit avant que je commence à dire n'importe quoi, c'est pour ça que je ne dirai rien concernant la façon dont ThrottleStop
-                        fonctionne</h3>
+                        <h3>cliquez sur "TPL" vous devriez voir ce panneau ensuite:</h3>
+                        <img src="images/pc1/throttlestop1.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+                        <h3>Regardez plus précisément le coin en bas à gauche, activez SpeedShift si c'est pas déjà le cas</h3>
+                        <h3>enfin diminuez la valeur minimum de SpeedShift, vous devriez rapidement remarquer une différence drastique de fréquence
+                            (et de températures)
+                            en appuyant sur appliquer
+                        </h3>
 <div style="height:100px;"></div>
-<h3>lancez MSI Afterburner, lancez un jeu bien gourmand sa mère, et augmentez la fréquence et la tension de la carte graphique en même temps que
+            <h1>Cas n°2 : votre pc marche pas assez fort</h1>
+
+<h3>pensez d'abord à vérifier la fréquence à laquelle votre processeur tourne en pleine charge, et vérifiez ensuite les données constructeurs,</h3>
+<h3>si sa fréquence est inférieure à celle prévue ET qu'il ne se limite toujours pas thermiquement :</h3>
+
+
+            <h3>il se peut que la fréquence du processeur soit limitée dans le bios dans le BIOS, allez dedans</h3>
+            <img src="images/pc1/210927190822.jpg" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+            <h3>sur cette photo par exemple on peut lire "core ratio negative offset value" c'est ça qui limite la fréquence (actuellement à 0)</h3>
+            <h3>si cette valeur n'est pas à 0, réduisez cette valeur en même temps que vous augmentez la tension du processeur</h3>
+            <h3>après tout ça dépend du bios, la tension et la fréquence doivent être augmenté en même temps, vérifiez où sont situé ces valeurs dans la documentation de votre carte mère</h3>
+<h3>pour finir, lancez MSI Afterburner, lancez un jeu bien gourmand sa mère, et augmentez la fréquence et la tension de la carte graphique en même temps que
     vous vérifiez la chauffe ou si votre jeu ou votre ordi devient instable
 </h3>
+
+<div style="height:100px;"></div>
+
 <div style="height:150px;"></div>
     <div style="display:flex; align-items:center; gap:10px;">
 
