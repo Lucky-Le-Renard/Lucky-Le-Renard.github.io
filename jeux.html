@@ -1,0 +1,494 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Projets de jeux</title> <link rel="icon" type="image/png" href="images/cute.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+@font-face {
+    font-family: 'Arial Bold Italic';
+    src: url('fonts/Arial Bold Italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Arial Narrow Bold Italic';
+    src: url('fonts/Arial Narrow Bold Italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Helvetica World';
+    src: url('fonts/helvetica world bold italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+}
+
+        body {
+            font-family: 'Arial Bold Italic';
+            src: url('fonts/Arial Bold Italic.woff2') format('woff2');
+            font-style: italic;
+            font-weight: bold;
+            background: #000000;
+            color: #fff;
+            padding: 40px;
+        }
+
+        a {
+            color: #ff4d4d;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .titre-hub,
+        .titre-autre,
+        .titre-autre2 {
+            font-family: 'Helvetica World';
+            font-style: italic;
+            font-weight: bold;
+            font-size: 4rem;
+            text-align: center;
+        }
+
+        .titre-hub {
+            color: #ffffff;
+        }
+
+        .titre-autre {
+            color: #000000;
+        }
+
+        .titre-autre2 {
+            color: #ffffff;
+        }
+
+        .fond-hub {
+            background-image: url("images/design/fond1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            height: 600px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fond-2 {
+            background-image: url("images/design/fond2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .fond-3 {
+            background-image: url("images/design/fond3.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .fond-4 {
+            background-image: url("images/design/fond5.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .séparation {
+            height: 10px;
+            box-sizing: border-box;
+            align-items: center;
+            background: #003cff57;
+        }
+
+        .séparation2 {
+            height: 15px;
+            width: auto;
+            align-items: center;
+            background: #0015ff57;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 30%;
+            left: 40%;
+            width: 1300px;
+            height: 1300px;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .parallax {
+            position: relative;
+            will-change: transform;
+            z-index: -1;
+        }
+
+        /* NAV */
+
+        nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        nav button {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav button.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Lecteur audio, volume, etc. */
+
+        #volumeControlContainer {
+            position: sticky;
+            top: 0px;
+            background: #111;
+            padding: 10px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .player-c {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            gap: 15px;
+            font-style: italic;
+            color: white;
+            background: #111;
+            padding: 10px;
+            border: 1px solid #fff;
+            width: auto;
+        }
+
+        .play {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .bar {
+            flex: 1;
+            height: 10px;
+            background: #333;
+            position: relative;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .timer {
+            min-width: 80px;
+            font-size: 20px;
+            font-family: inherit;
+            font-style: italic;
+        }
+
+        .track-name {
+            min-width: 150px;
+            font-size: 24px;
+            font-family: 'Helvetica World';
+            font-style: italic;
+        }
+    </style>
+    <!DOCTYPE html>
+<html>
+<!-- même <head> commun -->
+
+<body>
+<video class="bg-video" src="images/fond.mp4" autoplay muted loop></video>
+
+<nav>
+    <button onclick="location.href='index.html'">Accueil</button>
+    <button onclick="location.href='cours.html'">Musiques</button>
+    <button onclick="location.href='cours.html'">Cours de Musique</button>
+    <button onclick="location.href='photos.html'">Photos de profil</button>
+        <button onclick="location.href='dessins.html'">Dessins</button>
+    <button onclick="location.href='art.html'">Art</button>
+    <button onclick="location.href='guides.html'">Guides</button>
+    <button class="active" onclick="location.href='musiques.html'">Jeux</button>
+    <button onclick="location.href='voitures.html'">Voitures</button>
+    <button onclick="location.href='liens.html'">Liens</button>
+</nav>
+
+<div class="parallax" id="parallax-1">
+<div class="fond-3">
+    <h1 class="titre-autre" style="text-align: center;">Projets de jeux</h1>
+</div>
+</div>
+
+<!-- <div id="volumeControlContainer">
+    <label for="volumeControl" style="color: white;">Volume :</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5" style="width:200px;">
+</div> -->
+
+   <div style="height:50px;"></div>
+
+
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/jpadnom2.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+
+
+    <h1 style="text-align: center;">JPADNOM</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/101162914363373/JPADNOM</h3>
+
+
+    <div style="height:100px;"></div>
+
+    <h3>JPADNOM est un jeu de survie FFA axé sur la vitesse, avec un rythme frénétique et de nombreuses façon de détruire l'environnement</h3>
+
+    <h3>l'histoire raconté par le jeu est venue après avoir mis en place le décor, j'avais (au départ) aucune idée de quoi raconter</h3>
+    <div style="height:20px;"></div>
+
+    <h3 style="color: rgb(255, 0, 0);">le fonctionnement des armes est assez spécial :</h3>
+    <div style="height:10px;"></div>
+    <h3>lorsqu'une arme tire, elle tire un véritable projectile physique, et non un lancer de rayon, ce qui leur vaut énormément de problème de fiabilité</h3>
+
+        <h3>les balles peuvent traverser les corps, le décor, avoir du lag, bref tout plein de problèmes</h3>
+
+    <h3>je changerai cependant pour rien au monde cette mécanique, je lui trouve malgré tout du charme, et un côté assez unique</h3>
+   <div style="height:10px;"></div>
+    <h3>le HUD a un côté brutaliste, presque aggressif, le contraste de couleur (noir/blanc) (rouge/blanc) avec les effets stroboscopiques,
+        accompagné du texte en majuscule, les points d'exclamation..</h3>
+    <h3>la musique fait aussi entièrement partie de l'ambiance, de la DnB / expérimentale / ou très rythmique, j'ai pris un plaisir immense à y instaurer tout ça</h3>
+
+
+<div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/RobloxScreenShot20260729_092054350.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">Bac à Sable du renard V2</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/17669628444/BAC-A-SABLE-DU-RENARD-V2</h3>
+        
+    
+    <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/asenseur.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">Simulateur d'ascenseur pas aux normes</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/12319355283/Simulateur-dascenseur-pas-aux-normes</h3>
+
+
+    <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/obamium.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">Groupe SATA - Fabrication Unie (usine)</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/13106063843/Groupe-SATA-Fabrication-Unie</h3>
+
+
+    <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/RobloxScreenShot20240415_154930300.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">House</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/13106063843/Groupe-SATA-Fabrication-Unie</h3>
+
+
+
+        <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/RobloxScreenShot20251109_141506012.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">L'ange gardien du ROTORNERRE</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/117626489279743/lange-gardien-du-ROTORNERRE</h3>
+
+
+
+        <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/krc2.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">/?\ Karting Roblox de la Chance /?\</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/12553342421/Karting-Roblox-de-la-Chance</h3>
+
+
+
+        <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/Run2.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">qu'est ce qu'il y a dans la maison ??? (RUN)</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/75269821515018/quest-ce-quil-y-a-dans-la-maison</h3>
+
+
+        <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+
+ <img src="images/jeux/émeute.png" alt="Description" style="display:block; margin: 0 auto; height: 400px;">
+  <img src="images/jeux/émeute2.png" alt="Description" style="display:block; margin: 0 auto; height: 400px;">
+    </div>
+    <h1 style="text-align: center;">Autorité.exe</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/10945570618/Autorit-exe</h3>
+
+
+        <div style="height:100px;"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+ <img src="images/jeux/ceinture.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+ <img src="images/jeux/13 - Copie.png" alt="Description" style="display:block; margin: 0 auto; height: 500px;">
+    </div>
+    <h1 style="text-align: center;">Mr. Ceinture à l'attaque</h1>
+    <h3 style="text-align: center;">https://www.roblox.com/fr/games/17447653283/Mr-Ceinture-lattaque</h3>
+
+<script>
+document.querySelectorAll('.player-c').forEach(player => {
+    let audio = player.querySelector('audio');
+    let play = player.querySelector('.play');
+    let progress = player.querySelector('.progress');
+    let bar = player.querySelector('.bar');
+    let timer = player.querySelector('.timer');
+    let trackName = player.querySelector('.track-name');
+    let volumeControl = document.getElementById('volumeControl');
+    let audioElements = document.querySelectorAll('audio');
+
+    // pause les autres players quand on lance un son
+    play.onclick = () => {
+        if (audio.paused) {
+            document.querySelectorAll('.player-c').forEach(p => {
+                let a = p.querySelector('audio');
+                let btn = p.querySelector('.play');
+                if (a !== audio) {
+                    a.pause();
+                    btn.textContent = "JOUER";
+                }
+            });
+            audio.play();
+            play.textContent = "PAUSE";
+        } else {
+            audio.pause();
+            play.textContent = "JOUER";
+        }
+    };
+
+    audio.onended = () => {
+        play.textContent = "JOUER";
+    };
+
+    audio.volume = 0.5;
+    if (volumeControl) {
+        volumeControl.value = 0.5;
+        volumeControl.addEventListener('input', () => {
+            let vol = volumeControl.value;
+            audioElements.forEach(a => a.volume = vol);
+        });
+    }
+
+    function formatTime(sec) {
+        sec = Math.floor(sec);
+        let m = Math.floor(sec / 60);
+        let s = sec % 60;
+        if (s < 10) s = "0" + s;
+        if (m < 10) m = "0" + m;
+        return m + ":" + s;
+    }
+
+    function updateTrackName() {
+        let src = audio.src;
+        let name = src.split('/').pop().replace('.mp3', '');
+        name = decodeURIComponent(name);
+        trackName.textContent = name;
+    }
+
+    audio.ontimeupdate = () => {
+        if (audio.duration) {
+            progress.style.width = (audio.currentTime / audio.duration) * 100 + '%';
+            timer.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+        } else {
+            timer.textContent = '00:00 / ??:??';
+        }
+    };
+
+    bar.onclick = e => {
+        if (audio.duration) {
+            let rect = bar.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let percent = x / rect.width;
+            audio.currentTime = percent * audio.duration;
+        }
+    };
+
+    let seeking = false;
+    bar.addEventListener('mousedown', () => seeking = true);
+    window.addEventListener('mouseup', () => seeking = false);
+    window.addEventListener('mousemove', e => {
+        if (seeking && audio.duration) {
+            let rect = bar.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            x = Math.max(0, Math.min(rect.width, x));
+            let percent = x / rect.width;
+            audio.currentTime = percent * audio.duration;
+        }
+    });
+
+    audio.addEventListener('loadedmetadata', updateTrackName);
+    updateTrackName();
+});
+</script>
+</body>
+</html>
+</head>
