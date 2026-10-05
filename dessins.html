@@ -1,0 +1,354 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Photos de profil</title> <link rel="icon" type="image/png" href="images/cute.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+@font-face {
+    font-family: 'Arial Bold Italic';
+    src: url('fonts/Arial Bold Italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Arial Narrow Bold Italic';
+    src: url('fonts/Arial Narrow Bold Italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Helvetica World';
+    src: url('fonts/helvetica world bold italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+}
+
+        body {
+            font-family: 'Arial Bold Italic';
+            src: url('fonts/Arial Bold Italic.woff2') format('woff2');
+            font-style: italic;
+            font-weight: bold;
+            background: #000000;
+            color: #fff;
+            padding: 40px;
+        }
+
+        a {
+            color: #ff4d4d;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .titre-hub,
+        .titre-autre,
+        .titre-autre2 {
+            font-family: 'Helvetica World';
+            font-style: italic;
+            font-weight: bold;
+            font-size: 4rem;
+            text-align: center;
+        }
+
+        .titre-hub {
+            color: #ffffff;
+        }
+
+        .titre-autre {
+            color: #000000;
+        }
+
+        .titre-autre2 {
+            color: #ffffff;
+        }
+
+        .fond-hub {
+            background-image: url("images/design/fond1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            height: 600px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fond-2 {
+            background-image: url("images/design/fond2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .fond-3 {
+            background-image: url("images/design/fond3.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .fond-4 {
+            background-image: url("images/design/fond5.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .séparation {
+            height: 10px;
+            box-sizing: border-box;
+            align-items: center;
+            background: #003cff57;
+        }
+
+        .séparation2 {
+            height: 15px;
+            width: auto;
+            align-items: center;
+            background: #0015ff57;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 30%;
+            left: 40%;
+            width: 1300px;
+            height: 1300px;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .parallax {
+            position: relative;
+            will-change: transform;
+            z-index: -1;
+        }
+
+        /* NAV */
+
+        nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        nav button {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav button.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Lecteur audio, volume, etc. */
+
+        #volumeControlContainer {
+            position: sticky;
+            top: 0px;
+            background: #111;
+            padding: 10px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .player-c {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            gap: 15px;
+            font-style: italic;
+            color: white;
+            background: #111;
+            padding: 10px;
+            border: 1px solid #fff;
+            width: auto;
+        }
+
+        .play {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .bar {
+            flex: 1;
+            height: 10px;
+            background: #333;
+            position: relative;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .timer {
+            min-width: 80px;
+            font-size: 20px;
+            font-family: inherit;
+            font-style: italic;
+        }
+
+        .track-name {
+            min-width: 150px;
+            font-size: 24px;
+            font-family: 'Helvetica World';
+            font-style: italic;
+        }
+    </style>
+<body>
+    
+    <video class="bg-video" src="images/fond.mp4" autoplay muted loop></video>
+        <nav>
+    <button onclick="location.href='index.html'">Acceuil</button>
+    <button onclick="location.href='musiques.html'">Musiques</button>
+    <button onclick="location.href='cours.html'">Cours de Musique</button>
+    <button onclick="location.href='photos.html'">Photos de profil</button>
+        <button class="active" onclick="location.href='dessins.html'">Dessins</button>
+    <button onclick="location.href='art.html'">Art</button>
+    <button onclick="location.href='guides.html'">Guides</button>
+           <button onclick="location.href='jeux.html'">Jeux</button>
+        <button onclick="location.href='voitures.html'">Voitures</button>
+    <button onclick="location.href='liens.html'">Liens</button>
+</nav>
+<div class="parallax" id="parallax-1">
+    <div class="fond-4">
+    <h1 class="titre-autre2" id="section4" style="text-align: center;">
+        Dessins
+    </h1>
+    </div>
+</div>
+
+<!-- La grille EN DEHORS de fond-4 -->
+<div style="height:50px;"></div>
+
+<div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:20px; max-width:1100px; margin:0 auto;">
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/Images de profil 1.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>14 juillet 2020</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/Image de profil 3.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>9 octobre 2020</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/Image de profil 3 4.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>15 avril 2021</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/Renard.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>4 février 2022</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/Lucky becoming canny4.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>4 février 2022</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/lucky ceinture hover heaven.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>2 juillet 2023</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/mieux peut être.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>25 août 2023</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/bien.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>1 septembre 2023</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/renard1.jpg" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>24 décembre 2024</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/pdp2.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>4 janvier 2026</h2>
+  </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/pdp 2.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>17 février 2026</h2>
+  </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <img src="images/trop cute.png" alt="Description" style="width:100%; height:200px; object-fit:contain;">
+    <h2>5 mai 2026</h2>
+  </div>
+  </body>
+</div>
+</head>
+
+    <script>
+const para = document.getElementById('parallax-1');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  // 0.3 = l’élément bouge 3x moins vite que le scroll
+  para.style.transform = `translateY(${y * 0.3}px)`;
+});
+
+
+    </script>
+</body>
+
+</html>
