@@ -1113,6 +1113,15 @@
 <h3>6: à perte de vue</h3>
 
 <script>
+
+const para = document.getElementById('parallax-1');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  // 0.3 = l’élément bouge 3x moins vite que le scroll
+  para.style.transform = `translateY(${y * 0.3}px)`;
+});
+
 document.querySelectorAll('.player-c').forEach(player => {
     let audio = player.querySelector('audio');
     let play = player.querySelector('.play');

@@ -248,6 +248,7 @@
         }
     </style>
 <body>
+    
     <video class="bg-video" src="images/fond.mp4" autoplay muted loop></video>
         <nav>
     <button onclick="location.href='index.html'">Acceuil</button>
@@ -261,10 +262,12 @@
         <button onclick="location.href='voitures.html'">Voitures</button>
     <button onclick="location.href='liens.html'">Liens</button>
 </nav>
+<div class="parallax" id="parallax-1">
     <div class="fond-4">
     <h1 class="titre-autre2" id="section4" style="text-align: center;">
         Photos de profil (entre 2020 et 2026)
     </h1>
+    </div>
 </div>
 
 <!-- La grille EN DEHORS de fond-4 -->
@@ -334,3 +337,18 @@
   </body>
 </div>
 </head>
+
+    <script>
+const para = document.getElementById('parallax-1');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  // 0.3 = l’élément bouge 3x moins vite que le scroll
+  para.style.transform = `translateY(${y * 0.3}px)`;
+});
+
+
+    </script>
+</body>
+
+</html>

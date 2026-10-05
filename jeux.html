@@ -347,6 +347,14 @@
     <h1 style="text-align: center;">House</h1>
     <h3 style="text-align: center;">https://www.roblox.com/fr/games/17318228335/Maison</h3>
 
+ <h3>jeu fait avec naleg (big up)</h3>
+  <h3>c'est un jeu de survie qui réunit 2 équipes:</h3>
+   <h3>les survivants, et les intrus</h3>
+    <h3>les survivants doivent se barricader dans un bâtiment afin de finir en vie face aux intrus, qui doivent pénétrer le lieu et tuer tout le monde</h3>
+ <h3>ce jeu a une aura particulière pour moi, il a été la source de plusieurs engueulades avec naleg parce que je cassais les couilles à vouloir que le visuel et les mécaniques soient comme je le voulais</h3>
+        <div style="height:10px;"></div>
+ <h3>je sais toujours pas quoi penser de tout ça puis ce qu'à la base, tout ce projet était mon idée</h3>
+  <h3>je devrais essayer de le mettre à jour et régler tout ce qui va pas dans le code et le gameplay</h3>
 
 
         <div style="height:100px;"></div>
@@ -356,8 +364,10 @@
     </div>
     <h1 style="text-align: center;">L'ange gardien du ROTORNERRE</h1>
     <h3 style="text-align: center;">https://www.roblox.com/fr/games/117626489279743/lange-gardien-du-ROTORNERRE</h3>
+    
+    <div style="height:100px;"></div>
 
-
+<h3>projet de jeu à histoire que j'ai jamais sorti (j'espère le sortir un jour si j'ai pas la flemme)</h3>
 
         <div style="height:100px;"></div>
     <div style="display:flex; align-items:center; gap:10px;">
@@ -463,6 +473,15 @@
     
 
 <script>
+    
+const para = document.getElementById('parallax-1');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  // 0.3 = l’élément bouge 3x moins vite que le scroll
+  para.style.transform = `translateY(${y * 0.3}px)`;
+});
+
 document.querySelectorAll('.player-c').forEach(player => {
     let audio = player.querySelector('audio');
     let play = player.querySelector('.play');
